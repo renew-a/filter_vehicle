@@ -4,11 +4,11 @@
 
 Run the following command to install the project dependencies:
 
-````bash
+```bash
 npm install
 # or
 yarn install
-````
+```
 
 ## Running Linting and Formatting
 
@@ -24,6 +24,6 @@ npm run format
 npm run dev
 # or
 yarn dev
-````
+```
 
 Access the application at http://localhost:3000/.

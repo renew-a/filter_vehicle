@@ -1,5 +1,5 @@
-import SelectorVehicle from './pages/selectorVehicle.js';
+import SuspenseVehicle from './pages/suspenseVehicle';
 
 export default function Home() {
-  return <SelectorVehicle />;
+  return <SuspenseVehicle />;
 }
