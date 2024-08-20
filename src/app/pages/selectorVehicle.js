@@ -12,7 +12,9 @@ export default function SelectorVehicle() {
   useEffect(() => {
     const fetchVehicles = async () => {
       try {
-        const response = await fetch('https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json');
+        const response = await fetch(
+          'https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json',
+        );
 
         if (!response.ok) {
           throw new Error(`HTTP error ${response.status}`);
@@ -22,7 +24,7 @@ export default function SelectorVehicle() {
       } catch (error) {
         console.error('Error fetching', error);
       }
-    }
+    };
     fetchVehicles();
   }, []);
 
@@ -30,7 +32,7 @@ export default function SelectorVehicle() {
     const currentYear = new Date().getFullYear();
     const years = Array.from(
       { length: currentYear - 2015 + 1 },
-      (_, index) => currentYear - index
+      (_, index) => currentYear - index,
     ).reverse();
     setModelYears(years);
   }, []);
@@ -40,7 +42,12 @@ export default function SelectorVehicle() {
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
         <h1 className="text-2xl font-bold mb-6">Filter Vehicles</h1>
         <div className="mb-4">
-          <label htmlFor="vehicle-type" className="text-gray-700 block text-sm font-medium">Vehicle Type</label>
+          <label
+            htmlFor="vehicle-type"
+            className="text-gray-700 block text-sm font-medium"
+          >
+            Vehicle Type
+          </label>
           <select
             id="vehicle-type"
             name="vehicle-type"
@@ -50,12 +57,19 @@ export default function SelectorVehicle() {
           >
             <option value="">Select type</option>
             {vehicleTypes.map((type) => (
-              <option key={type.MakeId} value={type.MakeId}>{type.MakeName}</option>
+              <option key={type.MakeId} value={type.MakeId}>
+                {type.MakeName}
+              </option>
             ))}
           </select>
         </div>
         <div>
-          <label htmlFor="model-year" className="block text-sm font-medium text-gray-700">Model Year</label>
+          <label
+            htmlFor="model-year"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Model Year
+          </label>
           <select
             id="model-year"
             name="model-year"
@@ -65,13 +79,19 @@ export default function SelectorVehicle() {
           >
             <option value="">Select year</option>
             {modelYears.map((year) => (
-              <option key={year} value={year}>{year}</option>
+              <option key={year} value={year}>
+                {year}
+              </option>
             ))}
           </select>
         </div>
         <div className="mt-4">
           <Link
-            href={(selectedType && selectedYear) ? `/result/${selectedType}/${selectedYear}` : '#'}
+            href={
+              selectedType && selectedYear
+                ? `/result/${selectedType}/${selectedYear}`
+                : '#'
+            }
             passHref
           >
             <div
@@ -86,4 +106,3 @@ export default function SelectorVehicle() {
     </div>
   );
 }
-
