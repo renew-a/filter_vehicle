@@ -11,8 +11,6 @@ yarn install
 
 ## Deployment
 
-To deploy this project run
-
 ```bash
 npm run dev
 # or
